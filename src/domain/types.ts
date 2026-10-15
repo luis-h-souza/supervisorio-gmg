@@ -1,11 +1,18 @@
 export type Health = "ok" | "warn" | "bad" | "unknown" | "info";
 export type ViewId =
   | "dashboard"
+  | "diagram"
   | "energy"
   | "generators"
   | "history"
   | "alarms";
-export type ScenarioId = "normal" | "outage" | "failure" | "offline";
+export type ScenarioId =
+  | "normal"
+  | "outage"
+  | "failure"
+  | "blackout"
+  | "maintenance"
+  | "offline";
 
 export interface EventRecord {
   id: string;
@@ -44,6 +51,8 @@ export interface TelemetrySnapshot {
     description: string;
     gridAvailable: boolean | null;
     generatorsFeeding: boolean | null;
+    transferSwitch: "grid" | "generators" | "isolated" | "unknown";
+    storeEnergized: boolean | null;
   };
   communication: {
     health: Health;

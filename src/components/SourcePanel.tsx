@@ -4,12 +4,7 @@ import { StatusBadge } from "./StatusBadge";
 
 export function SourcePanel({ snapshot }: { snapshot: TelemetrySnapshot }) {
   const { source, communication } = snapshot;
-  const tone =
-    source.health === "unknown"
-      ? "unknown"
-      : source.generatorsFeeding
-        ? "warn"
-        : "ok";
+  const tone = source.health;
   return (
     <>
       {communication.health !== "ok" && (
@@ -28,7 +23,13 @@ export function SourcePanel({ snapshot }: { snapshot: TelemetrySnapshot }) {
         <div className="source-copy">
           <div className="flex flex-wrap items-center gap-2">
             <span className="eyebrow">Alimentação atual</span>
-            <StatusBadge health={source.health} />
+            <StatusBadge health={source.health}>
+              {source.health === "info"
+                ? "Desenergização programada"
+                : source.health === "bad" && source.storeEnergized === false
+                  ? "Sem energia"
+                  : undefined}
+            </StatusBadge>
           </div>
           <h2>{source.label}</h2>
           <p>{source.description}</p>
@@ -48,9 +49,17 @@ export function SourcePanel({ snapshot }: { snapshot: TelemetrySnapshot }) {
             <span>Geradores</span>
           </div>
           <ArrowRight size={15} className="text-muted" />
-          <div className="flow-node flow-active">
+          <div
+            className={`flow-node ${source.storeEnergized ? "flow-active" : ""}`}
+          >
             <span className="store-icon">L</span>
-            <span>Loja</span>
+            <span>
+              {source.storeEnergized === null
+                ? "Sem dados"
+                : source.storeEnergized
+                  ? "Loja"
+                  : "Sem energia"}
+            </span>
           </div>
         </div>
       </section>

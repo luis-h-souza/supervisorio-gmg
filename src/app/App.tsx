@@ -65,6 +65,7 @@ export default function App() {
           ) : (
             <div className="content-stack">
               {(view === "dashboard" ||
+                view === "diagram" ||
                 view === "energy" ||
                 view === "alarms") && <SourcePanel snapshot={snapshot} />}
               {(view === "dashboard" || view === "energy") && (
@@ -73,7 +74,9 @@ export default function App() {
                   generators={snapshot.generators}
                 />
               )}
-              {view === "dashboard" && <OperationDiagram snapshot={snapshot} />}
+              {(view === "dashboard" || view === "diagram") && (
+                <OperationDiagram snapshot={snapshot} />
+              )}
               {(view === "dashboard" || view === "generators") && (
                 <GeneratorSection generators={snapshot.generators} />
               )}

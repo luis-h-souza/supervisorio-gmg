@@ -4,6 +4,7 @@ import {
   Bolt,
   ChevronDown,
   Clock3,
+  GitBranch,
   LayoutDashboard,
   RadioTower,
   Zap,
@@ -16,6 +17,7 @@ const navigation: {
   icon: typeof LayoutDashboard;
 }[] = [
   { id: "dashboard", label: "Visão geral", icon: LayoutDashboard },
+  { id: "diagram", label: "Diagrama", icon: GitBranch },
   { id: "energy", label: "Energia", icon: Zap },
   { id: "generators", label: "Geradores", icon: Bolt },
   { id: "history", label: "Histórico", icon: Clock3 },
@@ -24,6 +26,7 @@ const navigation: {
 
 export const viewTitles: Record<ViewId, string> = {
   dashboard: "Visão geral",
+  diagram: "Diagrama de operação",
   energy: "Energia",
   generators: "Geradores",
   history: "Histórico",

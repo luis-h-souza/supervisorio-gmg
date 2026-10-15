@@ -379,6 +379,12 @@ select:focus-visible {
 .source-warn {
   border-left-color: #b97516;
 }
+.source-bad {
+  border-left-color: #cf4d47;
+}
+.source-info {
+  border-left-color: #3768d8;
+}
 
 .source-unknown {
   border-left-color: #8390a0;
@@ -659,6 +665,9 @@ select:focus-visible {
   border-top-color: #8390a0;
   background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgb(var(--canvas) / .55) 14px 15px);
 }
+.generator-info {
+  border-top-color: #3768d8;
+}
 
 .generator-icon {
   display: flex;
@@ -685,6 +694,10 @@ select:focus-visible {
   background: rgb(var(--canvas));
   color: rgb(var(--muted));
 }
+.generator-icon-info {
+  background: #eaf1ff;
+  color: #3768d8;
+}
 
 :root[data-theme='dark'] .generator-icon-ok {
   background: #183a2e;
@@ -699,6 +712,10 @@ select:focus-visible {
 :root[data-theme='dark'] .generator-icon-bad {
   background: #452321;
   color: #ff928b;
+}
+:root[data-theme='dark'] .generator-icon-info {
+  background: #20335a;
+  color: #99b7ff;
 }
 
 .generator-rule {
